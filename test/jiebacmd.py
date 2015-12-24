@@ -10,6 +10,12 @@ from __future__ import unicode_literals
 import sys
 sys.path.append("../")
 
+if sys.getdefaultencoding() != 'utf-8':
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+
+print sys.getdefaultencoding()
+
 import jieba
 
 default_encoding='utf-8'
@@ -23,6 +29,6 @@ while True:
         break
     line = line.strip()
     for word in jieba.cut(line):
-        print(word)
+        print (word).decode('utf-8').encode('utf-8')
 
 
